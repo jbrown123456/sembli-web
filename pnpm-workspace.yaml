@@ -1,14 +1,17 @@
 packages:
   - 'apps/*'
 
+# None of these postinstall scripts are required for mobile or web dev.
+# Listed both in allowBuilds (explicit deny) and ignoredBuiltDependencies
+# so pnpm 11 doesn't error out on first-time installs.
 allowBuilds:
-  '@sentry/cli': set this to true or false
-  core-js: set this to true or false
-  esbuild: set this to true or false
-  msw: set this to true or false
-  protobufjs: set this to true or false
-  sharp: set this to true or false
-  unrs-resolver: set this to true or false
+  '@sentry/cli': false
+  core-js: false
+  esbuild: false
+  msw: false
+  protobufjs: false
+  sharp: false
+  unrs-resolver: false
 
 ignoredBuiltDependencies:
   - '@sentry/cli'

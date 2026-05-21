@@ -2,6 +2,8 @@ import { ThemeProvider } from '@shopify/restyle'
 import { useFonts } from 'expo-font'
 import { StatusBar } from 'expo-status-bar'
 import { ActivityIndicator, View } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import RootNavigator from './src/navigation/RootNavigator'
 import theme from './src/theme'
@@ -30,9 +32,13 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar style="dark" />
-      <RootNavigator />
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <ThemeProvider theme={theme}>
+          <StatusBar style="dark" />
+          <RootNavigator />
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   )
 }
