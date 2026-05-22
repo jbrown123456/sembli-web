@@ -13,6 +13,10 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "_archive/**",
+    // apps/mobile/ uses Expo's own lint rules; supabase/functions/ is Deno.
+    // Each workspace owns its own lint job (see .github/workflows/ci.yml).
+    "apps/**",
+    "supabase/functions/**",
   ]),
 ]);
 
