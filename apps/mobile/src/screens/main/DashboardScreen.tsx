@@ -21,11 +21,25 @@ function SembliLogo({ size = 28, color = colors.ink }: { size?: number; color?: 
   )
 }
 
-function AvatarCircle({ initial }: { initial: string }) {
+function AvatarCircle({ initial, onPress }: { initial: string; onPress?: () => void }) {
+  if (!onPress) {
+    return (
+      <View style={styles.avatarCircle}>
+        <Text style={styles.avatarInitial}>{initial}</Text>
+      </View>
+    )
+  }
   return (
-    <View style={styles.avatarCircle}>
+    <TouchableOpacity
+      style={styles.avatarCircle}
+      onPress={onPress}
+      hitSlop={8}
+      accessibilityRole="button"
+      accessibilityLabel="Open settings"
+      activeOpacity={0.7}
+    >
       <Text style={styles.avatarInitial}>{initial}</Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
@@ -55,7 +69,7 @@ export default function DashboardScreen() {
         {/* Header */}
         <View style={styles.header}>
           <SembliLogo />
-          <AvatarCircle initial="J" />
+          <AvatarCircle initial="J" onPress={() => navigation.navigate('Settings')} />
         </View>
 
         {/* Greeting */}

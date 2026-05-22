@@ -28,6 +28,7 @@ export type OutlookStackParams = {
 export type RootStackParams = {
   Onboarding: NavigatorScreenParams<OnboardingStackParams>
   Main: NavigatorScreenParams<MainTabParams>
+  Settings: undefined
 }
 
 export type RootStackScreenProps<T extends keyof RootStackParams> =
