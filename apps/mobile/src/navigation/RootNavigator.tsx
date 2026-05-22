@@ -1,7 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
 import MainTabNavigator from './MainTabNavigator'
 import OnboardingNavigator from './OnboardingNavigator'
+import SettingsScreen from '../screens/main/SettingsScreen'
 import type { RootStackParams } from './types'
 
 const Stack = createStackNavigator<RootStackParams>()
@@ -21,6 +22,11 @@ export default function RootNavigator() {
             <Stack.Screen name="Main" component={MainTabNavigator} />
           </>
         )}
+        <Stack.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{ ...TransitionPresets.ModalSlideFromBottomIOS }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
