@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sembli Care — Nanny Manager</title>
+  <meta name="description" content="Nanny admin, handled — schedules, daily plans, tasks and hours in one app, so every day is about your kids. Free at launch on iOS, English & Spanish.">
+  <meta name="theme-color" content="#FFF9F2">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sembli Care — Nanny Manager">
+  <meta property="og:description" content="Nanny admin, handled — schedules, daily plans, tasks and hours in one app, so every day is about your kids.">
+  <meta property="og:url" content="https://www.sembli.co/care">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="canonical" href="https://www.sembli.co/care">
+
+  <style>
+    /* Instrument Sans — self-hosted (complies with site CSP font-src 'self') */
+    @font-face{
+      font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;
+      src:url(/care/fonts/InstrumentSans-latin.woff2) format('woff2');
+      unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    }
+    @font-face{
+      font-family:'Instrument Sans';font-style:normal;font-weight:400 700;font-stretch:100%;font-display:swap;
+      src:url(/care/fonts/InstrumentSans-latin-ext.woff2) format('woff2');
+      unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+    }
+
+    :root{
+      --ink:#23222B; --cream:#FFF9F2; --coral:#FF6B57; --cobalt:#3B5BDB;
+      --peach:#FFE1CB; --lavender:#DCE3FB; --muted:#8C8577; --faint:#B8AE9E;
+      --coral-light:#FF9C8B; --cobalt-light:#AEBDF5; --amber-light:#FFD9A8; --gray:#A9A5B3;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{background:var(--cream)}
+    body{
+      font-family:'Instrument Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--cobalt);text-decoration:none}
+    a:hover{color:var(--coral)}
+    ::selection{background:var(--peach)}
+
+    .page{min-height:100vh;background:var(--cream);display:flex;flex-direction:column}
+    .wrap{max-width:1040px;width:100%;margin:0 auto;box-sizing:border-box}
+
+    /* --- Nav --- */
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:26px 28px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand .word{font-weight:700;font-size:24px;letter-spacing:-.8px}
+    .brand .sub{font-weight:500;font-size:14px;color:var(--muted);margin-top:6px}
+
+    /* --- Pills (shared sticker button language) --- */
+    .pill{
+      display:inline-flex;align-items:center;white-space:nowrap;
+      border-radius:999px;font-weight:700;
+      transition:transform .15s ease,color .15s ease,background .15s ease;
+    }
+    .pill--nav{background:var(--ink);color:var(--cream);font-size:14px;padding:11px 20px;box-shadow:3px 3px 0 var(--peach)}
+    .pill--nav:hover{background:var(--cobalt);color:var(--cream)}
+
+    .pill--coral{background:var(--coral);color:#fff;font-size:16px;padding:15px 28px;
+      box-shadow:inset 0 0 0 2px var(--ink),4px 4px 0 var(--peach);transform:rotate(-.6deg)}
+    .pill--coral:hover{color:#fff;transform:rotate(-.6deg) translateY(-2px)}
+
+    .pill--ghost{background:#fff;color:var(--ink);font-size:16px;padding:15px 28px;
+      box-shadow:inset 0 0 0 2px var(--ink),4px 4px 0 var(--lavender);transform:rotate(.5deg)}
+    .pill--ghost:hover{color:var(--cobalt);transform:rotate(.5deg) translateY(-2px)}
+
+    /* --- Hero --- */
+    .hero{padding:54px 28px 30px;text-align:center}
+    .badge{
+      display:inline-flex;align-items:center;white-space:nowrap;
+      background:var(--lavender);color:var(--cobalt);font-weight:700;font-size:12.5px;
+      text-transform:uppercase;letter-spacing:.12em;padding:7px 16px;border-radius:999px;
+      box-shadow:inset 0 0 0 2px var(--ink),3px 3px 0 var(--peach);transform:rotate(-1.2deg);
+    }
+    .hero h1{
+      font-weight:700;font-size:clamp(40px,6.5vw,68px);line-height:1.04;
+      letter-spacing:-2.2px;margin:26px auto 0;max-width:760px;
+    }
+    .hero h1 .accent{color:var(--coral)}
+    .hero .lede{
+      font-weight:500;font-size:clamp(16px,2.2vw,19px);line-height:1.55;
+      color:var(--muted);max-width:600px;margin:20px auto 0;
+    }
+    .cta-row{display:flex;gap:14px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+    .microcopy{font-weight:500;font-size:13px;color:var(--faint);margin-top:16px}
+
+    /* --- Feature stickers --- */
+    .features{padding:44px 28px 10px}
+    .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
+    .card{
+      background:#fff;border-radius:22px;padding:26px 24px;
+      box-shadow:inset 0 0 0 2px var(--ink),5px 5px 0 var(--tint,var(--lavender));
+      transform:rotate(var(--rot,0deg));
+    }
+    .card .icon{
+      width:52px;height:52px;border-radius:50%;background:var(--tint,var(--lavender));
+      box-shadow:inset 0 0 0 2px var(--ink);display:flex;align-items:center;justify-content:center;
+      font-size:24px;margin-bottom:16px;transform:rotate(var(--icon-rot,0deg));
+    }
+    .card .title{font-weight:700;font-size:19px;letter-spacing:-.4px}
+    .card .desc{font-weight:500;font-size:14.5px;line-height:1.55;color:var(--muted);margin-top:8px}
+
+    /* --- How it works (ink panel) --- */
+    .how{padding:40px 28px;margin-top:34px}
+    .panel{background:var(--ink);border-radius:28px;box-shadow:6px 6px 0 var(--peach);padding:44px 40px;color:var(--cream)}
+    .panel .eyebrow{font-weight:700;font-size:13px;color:var(--coral-light);text-transform:uppercase;letter-spacing:.14em}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;margin-top:24px}
+    .step .n{font-weight:700;font-size:34px;letter-spacing:-1px}
+    .step .st-title{font-weight:700;font-size:17px;margin-top:6px}
+    .step .st-desc{font-weight:500;font-size:14px;line-height:1.55;color:var(--gray);margin-top:6px}
+
+    /* --- Quote strip --- */
+    .quote{max-width:720px;margin:0 auto;padding:36px 28px 20px;text-align:center}
+    .quote .q{font-weight:700;font-size:clamp(20px,3vw,26px);line-height:1.4;letter-spacing:-.6px}
+    .quote .q mark{background:var(--peach);color:inherit;padding:0 6px;border-radius:6px}
+    .quote .q-sub{font-weight:500;font-size:14px;color:var(--muted);margin-top:10px}
+
+    /* --- Footer --- */
+    .footer{margin-top:20px;padding:26px 28px 40px;display:flex;justify-content:space-between;
+      align-items:center;gap:16px;flex-wrap:wrap;border-top:2px solid #F2EADB}
+    .footer .fl{display:flex;align-items:center;gap:8px}
+    .footer .copy{font-weight:600;font-size:13.5px;color:var(--muted)}
+    .footer .made{font-weight:500;font-size:13.5px;color:var(--faint)}
+
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pill{transition:none}}
+
+    @media (max-width:560px){
+      .nav{padding:20px 20px}
+      .hero{padding:40px 20px 24px}
+      .footer{justify-content:center;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <!--
+    APP_STORE_URL: replace every href="#get" below with the App Store link when live.
+    Static page served at /care via a Next.js rewrite (see next.config.ts).
+    Font is self-hosted under /care/fonts to satisfy the site CSP (font-src 'self').
+  -->
+  <div class="page">
+
+    <!-- Nav -->
+    <nav class="nav wrap">
+      <div class="brand">
+        <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 27 C24 18 16 13 8.5 13 C8.5 21 15 27 24 27 Z" fill="#3B5BDB" stroke="#23222B" stroke-width="2" stroke-linejoin="round"/><path d="M24 27 C24 16 31 10 40 10 C40 19 33 27 24 27 Z" fill="#FF6B57" stroke="#23222B" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="36" r="8" fill="#FFE1CB" stroke="#23222B" stroke-width="2"/></svg>
+        <span class="word">sembli</span>
+        <span class="sub">care</span>
+      </div>
+      <a href="#get" class="pill pill--nav">Get the app</a>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero wrap">
+      <div class="badge">for parents who employ a nanny</div>
+      <h1>Nanny admin, handled — <span class="accent">so every day is about your kids.</span></h1>
+      <p class="lede">Sembli keeps schedules, plans, tasks and hours running quietly in the background — so you and your nanny can spend the energy on great activities and enrichment, not admin.</p>
+      <div class="cta-row">
+        <a id="get" href="#get" class="pill pill--coral">Coming to the App&nbsp;Store</a>
+        <a href="#how" class="pill pill--ghost">How it works</a>
+      </div>
+      <div class="microcopy">Free at launch · iOS · English &amp; Spanish, built in</div>
+    </header>
+
+    <!-- Feature stickers -->
+    <section class="features wrap" aria-label="Features">
+      <div class="feature-grid">
+        <article class="card" style="--tint:#DCE3FB;--rot:-0.6deg">
+          <div class="icon" style="--icon-rot:-4deg" aria-hidden="true">🗓</div>
+          <div class="title">A schedule that runs itself</div>
+          <div class="desc">Set the usual week once. One-off changes take three taps — or one sentence: “No school Friday, need Maria 8–4.” Your nanny is notified automatically.</div>
+        </article>
+        <article class="card" style="--tint:#FFE1CB;--rot:0.5deg">
+          <div class="icon" style="--icon-rot:5deg" aria-hidden="true">✍️</div>
+          <div class="title">Daily plans in under a minute</div>
+          <div class="desc">The assistant drafts tomorrow's plan from the schedule, tasks and past days. You edit, approve, send. Your nanny sees one clear “Today” screen — in her language.</div>
+        </article>
+        <article class="card" style="--tint:#DCE3FB;--rot:-0.4deg">
+          <div class="icon" style="--icon-rot:-3deg" aria-hidden="true">🌱</div>
+          <div class="title">Close the loop, gently</div>
+          <div class="desc">Weekly hours in one tap, a photo feed of the day, and a Sunday digest. No punch clocks, no GPS, no surveillance — clarity both ways.</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="how wrap">
+      <div class="panel">
+        <div class="eyebrow">how it works</div>
+        <div class="steps">
+          <div class="step">
+            <div class="n" style="color:#FF9C8B">01</div>
+            <div class="st-title">Set up your household</div>
+            <div class="st-desc">Kids, usual week, and your nanny joins with a code. Ten minutes, once.</div>
+          </div>
+          <div class="step">
+            <div class="n" style="color:#AEBDF5">02</div>
+            <div class="st-title">Tell it what changed</div>
+            <div class="st-desc">Type or say it. The assistant proposes the exact change; you confirm with a tap. It never acts on its own.</div>
+          </div>
+          <div class="step">
+            <div class="n" style="color:#FFD9A8">03</div>
+            <div class="st-title">Everyone knows the day</div>
+            <div class="st-desc">Your nanny opens one screen and knows the shift, the plan, and the tasks. Hours and photos flow back to you.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote strip -->
+    <section class="quote">
+      <div class="q">Caring for your family shouldn't feel like a <mark>second job</mark>.</div>
+      <div class="q-sub">Tell Sembli what changed — it handles the rest, and you confirm with one tap.</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer wrap">
+      <div class="fl">
+        <svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 27 C24 18 16 13 8.5 13 C8.5 21 15 27 24 27 Z" fill="#3B5BDB" stroke="#23222B" stroke-width="2" stroke-linejoin="round"/><path d="M24 27 C24 16 31 10 40 10 C40 19 33 27 24 27 Z" fill="#FF6B57" stroke="#23222B" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="36" r="8" fill="#FFE1CB" stroke="#23222B" stroke-width="2"/></svg>
+        <span class="copy">© 2026 Sembli · sembli.co/care</span>
+      </div>
+      <div class="made">Made for households, not HR departments.</div>
+    </footer>
+
+  </div>
+</body>
+</html>
