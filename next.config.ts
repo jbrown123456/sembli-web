@@ -18,6 +18,13 @@ const CSP = [
 ].join('; ')
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    // Serve the static Sembli Care landing page (public/care/index.html) at /care
+    return [
+      { source: '/care', destination: '/care/index.html' },
+      { source: '/care/', destination: '/care/index.html' },
+    ]
+  },
   async headers() {
     return [
       {
