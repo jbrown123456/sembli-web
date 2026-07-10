@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
       { source: '/care/terms/', destination: '/care/terms/index.html' },
       { source: '/care/support', destination: '/care/support/index.html' },
       { source: '/care/support/', destination: '/care/support/index.html' },
+      { source: '/care/privacidad', destination: '/care/privacidad/index.html' },
+      { source: '/care/privacidad/', destination: '/care/privacidad/index.html' },
+      { source: '/care/terminos', destination: '/care/terminos/index.html' },
+      { source: '/care/terminos/', destination: '/care/terminos/index.html' },
     ]
   },
   async headers() {
