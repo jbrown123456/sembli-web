@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
     return [
       { source: '/care', destination: '/care/index.html' },
       { source: '/care/', destination: '/care/index.html' },
+      { source: '/care/privacy', destination: '/care/privacy/index.html' },
+      { source: '/care/privacy/', destination: '/care/privacy/index.html' },
+      { source: '/care/terms', destination: '/care/terms/index.html' },
+      { source: '/care/terms/', destination: '/care/terms/index.html' },
+      { source: '/care/support', destination: '/care/support/index.html' },
+      { source: '/care/support/', destination: '/care/support/index.html' },
     ]
   },
   async headers() {
