@@ -1,3 +1,27 @@
+packages:
+  - 'apps/*'
+
+# Metro can't follow pnpm's isolated symlink layout for things like
+# @babel/runtime — install a flat node_modules tree like npm/yarn.
+# https://docs.expo.dev/guides/monorepos/
+nodeLinker: hoisted
+shamefullyHoist: true
+
+# None of these postinstall scripts are required for mobile or web dev.
+allowBuilds:
+  '@sentry/cli': false
+  core-js: false
+  esbuild: false
+  msw: false
+  protobufjs: false
+  sharp: false
+  unrs-resolver: false
+
 ignoredBuiltDependencies:
+  - '@sentry/cli'
+  - core-js
+  - esbuild
+  - msw
+  - protobufjs
   - sharp
   - unrs-resolver
